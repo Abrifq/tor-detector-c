@@ -23,10 +23,10 @@ int main (){
 Don't forget to link!
 
 ```sh
-gcc -shared -o bin/tor-detect.so -c tor-detector.c
-gcc -o bin/your-program bin/tor-detect.so your-code.c #static link
-# or
-## TODO ADD DYNAMIC LINKING (sorry guys, lol)
+make lib
+cp libtor-detector.so $YOUR_PROJECT_DIR/libs
+cd $YOUR_PROJECT_DIR
+gcc -L libs your-code.c -l tor-detector -o your-app
 ```
 
 ### Via including the source
@@ -42,7 +42,7 @@ int main (){
 ```
 
 I'm sure you can compile it yourself.
-<!-- TODO: welp, add instructions just in case! -->
+> Hint: `gcc your-code.c -o your-app`
 
 ## Using it as a terminal program
 
