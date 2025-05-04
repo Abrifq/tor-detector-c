@@ -1,7 +1,8 @@
 .PHONY: all clean
 all: bin/libtor-detector.so bin/cli
 
-CFLAGS=-Wall -Werror -Wextra -pedantic -pedantic-errors -g -D_POSIX_C_SOURCE=200809L
+# Note to maintainers: Edit .vscode/c_cpp_properties.json when you change the defines.
+CFLAGS=-Wall -Werror -Wextra -pedantic -pedantic-errors -g -D_POSIX_C_SOURCE=200809L -D__USE_GNU -D_GNU_SOURCE -std=c17
 %.so: private CFLAGS += -shared -fPIC
 
 clean:

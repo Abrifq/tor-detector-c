@@ -50,3 +50,8 @@ I'm sure you can compile it yourself.
 gcc -Wall -Werror -Wextra main.c tor-detector.c -o tor-detect
 ./tor-detector 1.2.3.4 # insert your ip here
 ```
+
+## Known Bugs
+
+Due to a bug within glibc's `getaddrinfo` implementation, (I have `glibc 2.35-0ubuntu9`) when it returns ENOADDR, there is a chance it might return null pointer to the library but forget to free the buffer it allocated itself.
+**This will cause a memory leak**, however extensive testing is required to see the impact.

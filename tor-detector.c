@@ -27,8 +27,7 @@ int isTorExitNode(const char* ip)
     char* node = (char*)malloc(dnsQueryAddressLength);
     snprintf(node, dnsQueryAddressLength, "%s%s", reversedIP, DNS_QUERY_SUFFIX);
     struct addrinfo* results = NULL;
-    struct addrinfo hints;
-    memset(&hints, 0, sizeof(hints));
+    struct addrinfo hints = { 0 };
     hints.ai_family = AF_INET;
     int queryResult = getaddrinfo(node, NULL, &hints, &results);
     if (results != NULL)
